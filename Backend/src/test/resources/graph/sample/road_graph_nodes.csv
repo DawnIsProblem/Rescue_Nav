@@ -1,0 +1,5 @@
+node_id,version_id,osm_node_id,node_type,lat,lng,elevation_meters,signalized,u_turn_permitted_emergency,fire_access_entry,metadata
+n1,v1,1,INTERSECTION,35.950000,126.960000,,false,false,false,{}
+n2,v1,2,INTERSECTION,35.950000,126.962000,,true,false,false,{}
+n3,v1,3,INTERSECTION,35.948500,126.962000,,false,true,false,{}
+n4,v1,4,INTERSECTION,35.948500,126.964000,,false,false,true,{}

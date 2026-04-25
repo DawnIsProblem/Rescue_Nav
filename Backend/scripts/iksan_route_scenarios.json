@@ -1,0 +1,72 @@
+[
+  {
+    "id": "IKSAN_01",
+    "name": "익산역 남측 -> 원광대병원 인근",
+    "origin": { "lat": 35.9500, "lng": 126.9600 },
+    "destination": { "address": "원광대병원 인근", "zonecode": "54538", "lat": 35.9485, "lng": 126.9640 },
+    "vehicleType": "FIRE_TRUCK"
+  },
+  {
+    "id": "IKSAN_02",
+    "name": "도심 서측 -> 북동측",
+    "origin": { "lat": 35.9472, "lng": 126.9561 },
+    "destination": { "address": "북동측 테스트 목적지", "zonecode": "54538", "lat": 35.9548, "lng": 126.9695 },
+    "vehicleType": "AMBULANCE"
+  },
+  {
+    "id": "IKSAN_03",
+    "name": "남서측 -> 중앙부",
+    "origin": { "lat": 35.9448, "lng": 126.9507 },
+    "destination": { "address": "중앙부 테스트 목적지", "zonecode": "54538", "lat": 35.9518, "lng": 126.9628 },
+    "vehicleType": "FIRE_TRUCK"
+  },
+  {
+    "id": "IKSAN_04",
+    "name": "중앙부 -> 동측 생활권",
+    "origin": { "lat": 35.9514, "lng": 126.9617 },
+    "destination": { "address": "동측 생활권 목적지", "zonecode": "54538", "lat": 35.9511, "lng": 126.9734 },
+    "vehicleType": "AMBULANCE"
+  },
+  {
+    "id": "IKSAN_05",
+    "name": "북서측 -> 남동측",
+    "origin": { "lat": 35.9579, "lng": 126.9524 },
+    "destination": { "address": "남동측 테스트 목적지", "zonecode": "54538", "lat": 35.9452, "lng": 126.9690 },
+    "vehicleType": "FIRE_TRUCK"
+  },
+  {
+    "id": "IKSAN_06",
+    "name": "동측 -> 서측 복귀",
+    "origin": { "lat": 35.9527, "lng": 126.9753 },
+    "destination": { "address": "서측 테스트 목적지", "zonecode": "54538", "lat": 35.9491, "lng": 126.9551 },
+    "vehicleType": "AMBULANCE"
+  },
+  {
+    "id": "IKSAN_07",
+    "name": "북측 간선 -> 병원권",
+    "origin": { "lat": 35.9632, "lng": 126.9622 },
+    "destination": { "address": "병원권 테스트 목적지", "zonecode": "54538", "lat": 35.9530, "lng": 126.9648 },
+    "vehicleType": "FIRE_TRUCK"
+  },
+  {
+    "id": "IKSAN_08",
+    "name": "서남측 주거지 -> 북동측",
+    "origin": { "lat": 35.9435, "lng": 126.9489 },
+    "destination": { "address": "북동측 테스트 목적지 2", "zonecode": "54538", "lat": 35.9592, "lng": 126.9710 },
+    "vehicleType": "AMBULANCE"
+  },
+  {
+    "id": "IKSAN_09",
+    "name": "중앙부 단거리",
+    "origin": { "lat": 35.9509, "lng": 126.9634 },
+    "destination": { "address": "중앙부 단거리 목적지", "zonecode": "54538", "lat": 35.9522, "lng": 126.9661 },
+    "vehicleType": "FIRE_TRUCK"
+  },
+  {
+    "id": "IKSAN_10",
+    "name": "그래프 경계 추정 케이스",
+    "origin": { "lat": 35.9418, "lng": 126.9442 },
+    "destination": { "address": "경계 추정 목적지", "zonecode": "54538", "lat": 35.9661, "lng": 126.9784 },
+    "vehicleType": "AMBULANCE"
+  }
+]

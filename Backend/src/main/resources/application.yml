@@ -1,0 +1,56 @@
+spring:
+  config:
+    import: optional:file:.env.properties
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  application:
+    name: rescue-nav-backend
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    problemdetails:
+      enabled: false
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
+logging:
+  level:
+    root: info
+    com.rescuenav.backend: info
+
+kakao:
+  local:
+    base-url: ${KAKAO_LOCAL_BASE_URL:https://dapi.kakao.com}
+    rest-api-key: ${KAKAO_REST_API_KEY:}
+    mobility-base-url: ${KAKAO_MOBILITY_BASE_URL:https://apis-navi.kakaomobility.com}
+    request-timeout-millis: ${KAKAO_REQUEST_TIMEOUT_MILLIS:5000}
+
+route:
+  graph:
+    enabled: ${ROUTE_GRAPH_ENABLED:false}
+    source: ${ROUTE_GRAPH_SOURCE:local}
+    preload-on-startup: ${ROUTE_GRAPH_PRELOAD_ON_STARTUP:true}
+    data-dir: ${ROUTE_GRAPH_DATA_DIR:}
+    snapshot-path: ${ROUTE_GRAPH_SNAPSHOT_PATH:}
+    supabase-url: ${ROUTE_GRAPH_SUPABASE_URL:${SUPABASE_URL:}}
+    supabase-key: ${ROUTE_GRAPH_SUPABASE_KEY:${SUPABASE_ANON_KEY:}}
+    supabase-page-size: ${ROUTE_GRAPH_SUPABASE_PAGE_SIZE:5000}
+    supabase-timeout-millis: ${ROUTE_GRAPH_SUPABASE_TIMEOUT_MILLIS:5000}
+    nearest-node-limit: ${ROUTE_GRAPH_NEAREST_NODE_LIMIT:5}
+    nearest-node-max-distance-meters: ${ROUTE_GRAPH_NEAREST_NODE_MAX_DISTANCE_METERS:1500}
+    eta-correction-ratio-min: ${ROUTE_GRAPH_ETA_CORRECTION_RATIO_MIN:0.6}
+    eta-correction-ratio-max: ${ROUTE_GRAPH_ETA_CORRECTION_RATIO_MAX:1.8}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+logging:
+  level:
+    com.rescuenav.backend: debug
