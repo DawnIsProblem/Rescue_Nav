@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+        "source": "/api/:path*",
+        "destination": "https://port-0-rescue-nav-moqx33vfab758c9d.sel3.cloudtype.app/api/:path*"
+        }
+    ]
+}
