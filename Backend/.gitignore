@@ -39,7 +39,10 @@ out/
 ### Local Env / Data ###
 .env.properties
 data/raw/
-data/output/
+data/output/*
+!data/output/iksan_current/
+!data/output/iksan_current/road_graph_snapshot.json.gz
+!data/output/iksan_current/validation_report.json
 
 ### Python ###
 __pycache__/

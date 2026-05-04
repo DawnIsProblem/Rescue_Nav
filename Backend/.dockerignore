@@ -1,0 +1,13 @@
+.git
+.github
+.gradle
+.idea
+bin
+build
+data/raw
+pipeline
+scripts
+supabase
+*.log
+.env.properties
+.DS_Store

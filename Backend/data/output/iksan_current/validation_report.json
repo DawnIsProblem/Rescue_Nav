@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-04-23T12:07:42.673402+00:00",
+  "node_count": 119705,
+  "edge_count": 266146,
+  "tag_count": 135576,
+  "original_way_point_count": 341580,
+  "kept_way_point_count": 185387,
+  "removed_way_point_count": 156193,
+  "simplification_ratio": 0.4573,
+  "road_type_distribution": {
+    "trunk": 657,
+    "motorway": 857,
+    "unclassified": 3322,
+    "tertiary": 2788,
+    "secondary": 1045,
+    "residential": 17781,
+    "living_street": 1699,
+    "primary": 677,
+    "service": 16863,
+    "road": 2
+  },
+  "warnings": [
+    "No bus-lane edges were inferred. Manual overrides may be required."
+  ]
+}
