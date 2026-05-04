@@ -10,125 +10,125 @@ import SearchTopBar from '../components/shared/SearchTopBar'
 
 const desktopHistoryCards = [
   {
-    badge: 'Emergency Level 1',
+    badge: '긴급 1단계',
     badgeTone: 'red' as const,
     title: '221B Baker Street',
     location: 'NWI 6XE, London',
     eta: '04:20',
-    unit: 'Medic-44',
-    date: 'Oct 24, 2023',
+    unit: '구급차 44호',
+    date: '2023년 10월 24일',
     thumbnailTone: 'aqua' as const,
   },
   {
-    badge: 'Completed',
+    badge: '완료',
     badgeTone: 'blue' as const,
     title: 'Shibuya Crossing',
     location: 'Tokyo, JP',
     eta: '12:15',
-    unit: 'Fire-7',
-    date: 'Oct 23, 2023',
+    unit: '소방차 7호',
+    date: '2023년 10월 23일',
     thumbnailTone: 'dark' as const,
   },
   {
-    badge: 'Critical Level 3',
+    badge: '위험 3단계',
     badgeTone: 'red' as const,
     title: 'Ocean Drive, 1200',
     location: 'Miami Beach, FL',
     eta: '02:45',
-    unit: 'Air-Rescue 1',
-    date: 'Oct 22, 2023',
+    unit: '항공구조 1호',
+    date: '2023년 10월 22일',
     thumbnailTone: 'coast' as const,
   },
   {
-    badge: 'Resolved',
+    badge: '조치 완료',
     badgeTone: 'teal' as const,
     title: '45th Ave NE',
     location: 'Seattle, WA',
     eta: '08:30',
-    unit: 'Patrol-90',
-    date: 'Oct 21, 2023',
+    unit: '순찰 90호',
+    date: '2023년 10월 21일',
     thumbnailTone: 'green' as const,
   },
   {
-    badge: 'Routine',
+    badge: '일반 출동',
     badgeTone: 'teal' as const,
     title: 'Wall Street 11',
     location: 'Manhattan, NY',
     eta: '06:12',
-    unit: 'Medic-12',
-    date: 'Oct 20, 2023',
+    unit: '구급차 12호',
+    date: '2023년 10월 20일',
     thumbnailTone: 'green' as const,
   },
 ]
 
 const tabletHistoryCards = [
   {
-    badge: 'Urgent Response',
+    badge: '긴급 출동',
     badgeTone: 'red' as const,
     title: 'Mission St, Financial District',
-    eta: '4m 12s',
-    vehicle: 'Ambulance Alpha-7',
-    timestamp: 'Oct 24, 08:42 AM',
+    eta: '4분 12초',
+    vehicle: '구급차 Alpha-7',
+    timestamp: '10월 24일 오전 8:42',
   },
   {
-    badge: 'Rapid Deployment',
+    badge: '신속 배치',
     badgeTone: 'blue' as const,
     title: '1200 Broadway, Jack London Sq',
-    eta: '7m 45s',
-    vehicle: 'Engine Unit 12',
-    timestamp: 'Oct 24, 07:15 AM',
+    eta: '7분 45초',
+    vehicle: '소방 펌프차 12호',
+    timestamp: '10월 24일 오전 7:15',
   },
   {
-    badge: 'Medical Support',
+    badge: '의료 지원',
     badgeTone: 'blue' as const,
     title: 'S 4th St, Downtown SJ',
-    eta: '2m 50s',
-    vehicle: 'Rapid SUV-03',
-    timestamp: 'Oct 23, 11:59 PM',
+    eta: '2분 50초',
+    vehicle: '신속 대응 차량-03',
+    timestamp: '10월 23일 오후 11:59',
   },
   {
-    badge: 'Multi-Unit Alert',
+    badge: '다중 출동',
     badgeTone: 'red' as const,
     title: '101 Hillsdale Blvd, Station Park',
-    eta: '11m 20s',
-    vehicle: 'Rescue Van Bravo',
-    timestamp: 'Oct 23, 04:30 PM',
+    eta: '11분 20초',
+    vehicle: '구조 밴 Bravo',
+    timestamp: '10월 23일 오후 4:30',
   },
 ]
 
 const mobileHistoryCards = [
   {
-    badge: 'High Priority',
+    badge: '최우선 대응',
     badgeTone: 'red' as const,
-    title: 'Structural Fire Resp.',
-    subtitle: 'May 24, 2024 · 08:14 AM',
+    title: '건축물 화재 대응',
+    subtitle: '2024년 5월 24일 · 오전 8:14',
     duration: '12:44',
     metaA: '4.2 km',
     metaB: '54 km/h',
     metaC: '88%',
-    cta: 'VIEW LOG >',
+    cta: '기록 보기 >',
   },
   {
-    badge: 'Routine Support',
+    badge: '정기 지원',
     badgeTone: 'blue' as const,
-    title: 'Equipment Delivery',
-    subtitle: 'May 23, 2024 · 02:30 PM',
+    title: '장비 전달',
+    subtitle: '2024년 5월 23일 · 오후 2:30',
     duration: '45:10',
     metaA: '12.8 km',
     metaB: 'L-882',
-    metaC: 'Stable',
-    cta: 'ARCHIVE []',
+    metaC: '안정',
+    cta: '보관 처리',
   },
   {
-    badge: 'Status Check',
+    badge: '상태 점검',
     badgeTone: 'gray' as const,
-    title: 'Area Perimeter Scan',
-    subtitle: 'May 22, 2024 · 11:00 PM',
+    title: '현장 주변 스캔',
+    subtitle: '2024년 5월 22일 · 오후 11:00',
     duration: '08:22',
-    metaA: 'IR Scan',
-    metaB: 'Clear',
+    metaA: '열화상 스캔',
+    metaB: '이상 없음',
     metaC: '-',
-    cta: 'VIEW LOG >',
+    cta: '기록 보기 >',
   },
 ]
 
@@ -139,7 +139,7 @@ function DesktopHistoryView() {
 
       <main className="flex-1">
         <SearchTopBar
-          placeholder="Search dispatches..."
+          placeholder="출동 이력 검색..."
           className="justify-end rounded-none border-0 border-b px-6 py-4 shadow-none"
           searchWrapClassName="w-[420px] flex-none rounded-full"
           right={
@@ -153,14 +153,14 @@ function DesktopHistoryView() {
         <section className="px-6 pb-8 pt-6">
           <div className="mb-5 flex items-start justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-red-500">Archive Overview</p>
-              <h1 className="mt-2 text-5xl font-bold leading-none tracking-tight text-zinc-900">Dispatch History</h1>
+              <p className="text-xs font-bold uppercase tracking-widest text-red-500">이력 개요</p>
+              <h1 className="mt-2 text-5xl font-bold leading-none tracking-tight text-zinc-900">출동 이력</h1>
             </div>
 
             <div className="flex items-center gap-2">
-              <CtaButton className="rounded-full px-4 py-2 text-xs">Grid</CtaButton>
-              <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs text-zinc-500">List</CtaButton>
-              <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs text-zinc-500">Filter</CtaButton>
+              <CtaButton className="rounded-full px-4 py-2 text-xs">격자</CtaButton>
+              <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs text-zinc-500">목록</CtaButton>
+              <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs text-zinc-500">필터</CtaButton>
             </div>
           </div>
 
@@ -174,7 +174,7 @@ function DesktopHistoryView() {
           </div>
 
           <div className="mt-8 flex items-center justify-between border-t border-zinc-200 pt-6">
-            <p className="text-xs font-semibold text-zinc-400">Showing 1-6 of 240 records</p>
+            <p className="text-xs font-semibold text-zinc-400">240건 중 1-6건 표시</p>
             <div className="flex items-center gap-2">
               <button className="h-8 w-8 rounded-md border border-zinc-200 bg-white text-zinc-400">&lt;</button>
               <button className="h-8 w-8 rounded-md bg-red-600 text-sm font-bold text-white">1</button>
@@ -200,16 +200,16 @@ function TabletHistoryView() {
         <div className="flex items-center gap-5">
           <p className="text-4xl font-bold leading-none tracking-tight text-red-600">Rescue_Nav</p>
           <nav className="flex items-center gap-5 text-sm font-semibold text-zinc-500">
-            <span>Problem</span>
-            <span>Features</span>
-            <span>Pricing</span>
-            <span>Support</span>
+            <span>개요</span>
+            <span>기능</span>
+            <span>도입</span>
+            <span>안내</span>
           </nav>
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="text-sm font-semibold text-zinc-500">{'<-'} Back to Map</button>
-          <CtaButton className="px-5 py-3 text-sm font-semibold">Start Navigation</CtaButton>
+          <button className="text-sm font-semibold text-zinc-500">{'<-'} 지도로 돌아가기</button>
+          <CtaButton className="px-5 py-3 text-sm font-semibold">경로 탐색 시작</CtaButton>
         </div>
       </header>
 
@@ -219,15 +219,15 @@ function TabletHistoryView() {
         <main className="flex-1 px-6 pb-8 pt-5">
           <div className="mb-5 flex items-start justify-between">
             <div>
-              <h1 className="text-5xl font-bold leading-none tracking-tight text-zinc-900">Dispatch History</h1>
-              <p className="mt-2 text-xl text-zinc-500">Reviewing past emergency responses and unit deployments.</p>
+              <h1 className="text-5xl font-bold leading-none tracking-tight text-zinc-900">출동 이력</h1>
+              <p className="mt-2 text-xl text-zinc-500">과거 긴급 출동과 차량 배치 기록을 확인합니다.</p>
             </div>
             <div className="flex items-center gap-2">
               <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-sm font-semibold text-zinc-600">
-                Filter by Date
+                날짜별 필터
               </CtaButton>
               <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-sm font-semibold text-zinc-600">
-                Export CSV
+                CSV 내보내기
               </CtaButton>
             </div>
           </div>
@@ -240,19 +240,19 @@ function TabletHistoryView() {
 
           <div className="mt-8 flex justify-center">
             <CtaButton variant="neutral" className="px-6 py-3 text-sm font-semibold text-zinc-700">
-              View All Historic Records v
+              전체 이력 보기
             </CtaButton>
           </div>
         </main>
       </div>
 
       <footer className="mt-6 flex items-center justify-between border-t border-zinc-200 px-6 py-5 text-xs font-semibold text-zinc-400">
-        <p>Rescue_Nav. Precision in Emergency Navigation.</p>
+        <p>Rescue_Nav. 긴급 출동을 위한 정밀 내비게이션.</p>
         <div className="flex items-center gap-6">
-          <span>Privacy Policy</span>
-          <span>Terms of Service</span>
-          <span>Contact Expert</span>
-          <span>System Status</span>
+          <span>개인정보 처리방침</span>
+          <span>이용 약관</span>
+          <span>문의하기</span>
+          <span>시스템 상태</span>
         </div>
       </footer>
     </PageShell>
@@ -271,18 +271,18 @@ function MobileHistoryView() {
       </header>
 
       <main className="px-5 pt-5">
-        <h1 className="text-6xl font-bold leading-none tracking-tight text-zinc-900">Dispatch History</h1>
-        <p className="mt-2 text-sm font-medium text-zinc-500">Reviewing 14 operations from the last 30 days</p>
+        <h1 className="text-6xl font-bold leading-none tracking-tight text-zinc-900">출동 이력</h1>
+        <p className="mt-2 text-sm font-medium text-zinc-500">최근 30일간 14건의 운영 기록을 확인하고 있습니다.</p>
 
         <div className="mt-4 flex gap-2">
           <CtaButton className="rounded-full px-4 py-2 text-xs uppercase tracking-wide">
-            All Records
+            전체
           </CtaButton>
           <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs uppercase tracking-wide text-zinc-600">
-            Emergency
+            긴급
           </CtaButton>
           <CtaButton variant="neutral" className="rounded-full px-4 py-2 text-xs uppercase tracking-wide text-zinc-600">
-            Transport
+            이송
           </CtaButton>
         </div>
 

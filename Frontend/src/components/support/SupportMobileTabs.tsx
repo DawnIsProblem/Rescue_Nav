@@ -1,10 +1,10 @@
 import BottomTabNav from '../shared/BottomTabNav'
 
 const tabs = [
-  { label: 'Dispatch', active: false },
-  { label: 'History', active: false },
-  { label: 'Support', active: true },
-  { label: 'Settings', active: false, inactiveIcon: '*' },
+  { label: '출동', active: false },
+  { label: '이력', active: false },
+  { label: '안내', active: true },
+  { label: '설정', active: false, inactiveIcon: '*' },
 ]
 
 export default function SupportMobileTabs() {

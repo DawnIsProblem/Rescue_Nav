@@ -1,15 +1,35 @@
-import DispatchMapOverlay from '../components/dispatch/DispatchMapOverlay'
+import { useEffect, useState } from 'react'
+import DestinationSearchSection from '../components/dispatch/DestinationSearchSection'
 import DispatchPanel from '../components/dispatch/DispatchPanel'
 import DispatchSidebar from '../components/dispatch/DispatchSidebar'
 import MobileBottomTabs from '../components/dispatch/MobileBottomTabs'
+import KakaoMap from '../components/map/KakaoMap'
 import CtaButton from '../components/shared/CtaButton'
 import PageShell from '../components/shared/PageShell'
 import SearchTopBar from '../components/shared/SearchTopBar'
 import StatusCard from '../components/shared/StatusCard'
 
+type DispatchViewport = 'desktop' | 'tablet' | 'mobile'
+
+function getDispatchViewport(): DispatchViewport {
+  if (typeof window === 'undefined') {
+    return 'desktop'
+  }
+
+  if (window.innerWidth >= 1024) {
+    return 'desktop'
+  }
+
+  if (window.innerWidth >= 768) {
+    return 'tablet'
+  }
+
+  return 'mobile'
+}
+
 function DesktopDispatchView() {
   return (
-    <PageShell outerClassName="hidden h-screen bg-[#eceff2] lg:flex">
+    <PageShell outerClassName="flex h-screen bg-[#eceff2]">
       <DispatchSidebar mode="desktop" />
 
       <section className="flex-1 p-3">
@@ -18,17 +38,17 @@ function DesktopDispatchView() {
           className="mb-3"
           right={
             <>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-zinc-100 text-sm">!</span>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-amber-50 text-sm">i</span>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-zinc-100 text-sm">u</span>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-zinc-100 text-sm">!</span>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-amber-50 text-sm">i</span>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-zinc-100 text-sm">u</span>
             </>
           }
         />
 
         <div className="relative h-[calc(100vh-102px)] min-h-[700px] overflow-hidden rounded-xl border-[6px] border-zinc-500/70 bg-[#e8ebe7]">
-          <DispatchMapOverlay mode="desktop" />
+          <KakaoMap className="h-full w-full" />
 
-          <div className="absolute left-4 top-4 w-[365px] space-y-3">
+          <div className="absolute left-4 top-4 w-[380px] space-y-3">
             <DispatchPanel>
               <div className="mb-3 flex items-center justify-between text-xs font-bold uppercase tracking-wide text-zinc-400">
                 <span>Active Incident</span>
@@ -40,6 +60,10 @@ function DesktopDispatchView() {
                 <span>Incident Code</span>
                 <span className="text-sm text-zinc-800">MED-882</span>
               </div>
+            </DispatchPanel>
+
+            <DispatchPanel className="bg-zinc-100">
+              <DestinationSearchSection />
             </DispatchPanel>
 
             <DispatchPanel className="bg-zinc-100">
@@ -133,11 +157,11 @@ function DesktopDispatchView() {
 
 function TabletDispatchView() {
   return (
-    <PageShell outerClassName="hidden h-screen bg-[#eceff2] md:flex lg:hidden">
+    <PageShell outerClassName="flex h-screen bg-[#eceff2]">
       <DispatchSidebar mode="tablet" />
 
       <section className="relative flex-1 overflow-hidden">
-        <DispatchMapOverlay mode="tablet" />
+        <KakaoMap className="h-full w-full" />
 
         <div className="absolute right-5 top-5 flex items-center gap-3">
           <span className="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-zinc-500">
@@ -154,11 +178,10 @@ function TabletDispatchView() {
         <div className="absolute right-5 top-24 w-[430px] space-y-4">
           <DispatchPanel>
             <p className="text-4xl font-bold leading-none text-zinc-900">Emergency Setup</p>
-            <p className="mt-2 text-2xl text-zinc-400">Define perimeter and unit allocation</p>
+            <p className="mt-2 text-2xl text-zinc-400">Define destination before route generation</p>
 
-            <p className="mt-6 text-xs font-bold uppercase tracking-widest text-zinc-400">Target Coordinates</p>
-            <div className="mt-2 rounded-lg bg-zinc-100 px-3 py-3 text-xl font-semibold text-zinc-700">
-              34.0522 N, 118.2437 W
+            <div className="mt-6">
+              <DestinationSearchSection />
             </div>
 
             <p className="mt-5 text-xs font-bold uppercase tracking-widest text-zinc-400">Unit Assignment</p>
@@ -219,23 +242,23 @@ function TabletDispatchView() {
 
 function MobileDispatchView() {
   return (
-    <PageShell outerClassName="relative h-screen overflow-hidden bg-[#0f141b] text-white md:hidden">
+    <PageShell outerClassName="relative h-screen overflow-hidden bg-[#0f141b] text-white">
+      <KakaoMap className="absolute inset-0" />
       <div
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0 opacity-35"
         style={{
           background:
-            'radial-gradient(circle at 40% 30%, rgba(45,55,70,0.8) 0%, rgba(20,25,33,0.95) 40%, rgba(12,15,22,1) 100%)',
+            'radial-gradient(circle at 40% 30%, rgba(45,55,70,0.8) 0%, rgba(20,25,33,0.65) 40%, rgba(12,15,22,0.85) 100%)',
         }}
       />
       <div
-        className="absolute inset-0 opacity-35"
+        className="pointer-events-none absolute inset-0 opacity-20"
         style={{
           backgroundImage:
             'linear-gradient(rgba(255,255,255,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
           backgroundSize: '22px 22px',
         }}
       />
-      <DispatchMapOverlay mode="mobile" />
 
       <header className="relative z-10 flex items-center justify-between border-b border-zinc-600/50 bg-white px-4 py-3 text-zinc-800">
         <p className="text-[40px] font-bold leading-none tracking-tight text-red-600">Rescue_Nav</p>
@@ -268,7 +291,7 @@ function MobileDispatchView() {
         />
       </section>
 
-      <section className="absolute bottom-20 left-4 right-4 z-20 rounded-[34px] border border-zinc-200 bg-white px-6 pb-8 pt-5 text-zinc-900 shadow-[0_-18px_32px_rgba(0,0,0,0.3)]">
+      <section className="absolute bottom-20 left-4 right-4 z-20 max-h-[calc(100vh-180px)] overflow-y-auto rounded-[34px] border border-zinc-200 bg-white px-6 pb-8 pt-5 text-zinc-900 shadow-[0_-18px_32px_rgba(0,0,0,0.3)]">
         <div className="mx-auto mb-6 h-1.5 w-16 rounded-full bg-slate-200" />
 
         <div className="space-y-5">
@@ -276,10 +299,8 @@ function MobileDispatchView() {
             <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Pick-Up Location</p>
             <p className="mt-1 text-4xl font-bold leading-tight">St. Jude Medical Center, Area 4</p>
           </div>
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Rescue Destination</p>
-            <p className="mt-1 text-3xl font-bold leading-tight text-slate-400">Search address or coordinate...</p>
-          </div>
+
+          <DestinationSearchSection compact />
 
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-lg bg-zinc-100 p-3">
@@ -304,11 +325,26 @@ function MobileDispatchView() {
 }
 
 export default function DispatchPage() {
-  return (
-    <>
-      <MobileDispatchView />
-      <TabletDispatchView />
-      <DesktopDispatchView />
-    </>
-  )
+  const [viewport, setViewport] = useState<DispatchViewport>(() => getDispatchViewport())
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewport(getDispatchViewport())
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  if (viewport === 'mobile') {
+    return <MobileDispatchView />
+  }
+
+  if (viewport === 'tablet') {
+    return <TabletDispatchView />
+  }
+
+  return <DesktopDispatchView />
 }

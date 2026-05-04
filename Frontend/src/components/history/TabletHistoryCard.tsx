@@ -44,22 +44,22 @@ export default function TabletHistoryCard({
       <div className="p-4">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Incident Location</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">사고 위치</p>
             <p className="mt-1 text-3xl font-bold leading-tight text-zinc-900">{title}</p>
           </div>
           <div className="text-right">
-            <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">ETA</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">예상 도착</p>
             <p className="mt-1 text-4xl font-bold text-red-600">{eta}</p>
           </div>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
           <div className="rounded-md bg-zinc-100 p-3">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Vehicle Type</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">차량 종류</p>
             <p className="mt-1 text-sm font-semibold text-zinc-700">{vehicle}</p>
           </div>
           <div className="rounded-md bg-zinc-100 p-3">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Timestamp</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">출동 시각</p>
             <p className="mt-1 text-sm font-semibold text-zinc-700">{timestamp}</p>
           </div>
         </div>

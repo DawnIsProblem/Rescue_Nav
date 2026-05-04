@@ -31,14 +31,14 @@ export default function HistorySidebar({ mode }: HistorySidebarProps) {
         <>
           <p className="text-[40px] font-bold leading-none tracking-tight text-red-600">Rescue_Nav</p>
           <p className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500">
-            Emergency Response
+            긴급 대응 내비게이션
           </p>
         </>
       }
       nav={
         <SidebarMenu
           className="mt-8 space-y-2"
-          items={['Dispatch', 'History', 'Support'].map((label, index) => ({
+          items={['출동', '이력', '안내'].map((label, index) => ({
             label,
             active: index === 1,
             icon: index === 1 ? 'o' : '+',
@@ -49,11 +49,11 @@ export default function HistorySidebar({ mode }: HistorySidebarProps) {
       footer={
         <div className="space-y-4">
           <CtaButton className="w-full px-4 py-3 text-sm shadow-[0_10px_18px_rgba(220,38,38,0.28)]">
-            START RESCUE
+            출동 시작
           </CtaButton>
           <button className="flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-slate-700">
             <span className="text-base">*</span>
-            Settings
+            설정
           </button>
         </div>
       }

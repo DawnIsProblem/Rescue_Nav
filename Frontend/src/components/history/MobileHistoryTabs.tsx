@@ -1,9 +1,9 @@
 import BottomTabNav from '../shared/BottomTabNav'
 
 const tabs = [
-  { label: 'Dispatch', active: false },
-  { label: 'History', active: true },
-  { label: 'Support', active: false },
+  { label: '출동', active: false },
+  { label: '이력', active: true },
+  { label: '안내', active: false },
 ]
 
 export default function MobileHistoryTabs() {

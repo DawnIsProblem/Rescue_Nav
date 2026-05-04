@@ -1,133 +1,144 @@
 import { Link } from 'react-router-dom'
-import GuideWorkflowCard from '../components/support/GuideWorkflowCard'
 import InterfacePreviewSection from '../components/support/InterfacePreviewSection'
 import SupportFaqAccordion from '../components/support/SupportFaqAccordion'
 import AppHeader from '../components/shared/AppHeader'
 import CtaButton from '../components/shared/CtaButton'
 import PageShell from '../components/shared/PageShell'
+import SiteFooter from '../components/shared/SiteFooter'
+import { useAppLanguage } from '../lib/appLanguage'
 
-const faqItems = [
-  {
-    question: 'How is traffic data updated?',
-    answer:
-      'Routing overlays are refreshed continuously from municipal feeds and field telemetry with fallback satellite packets.',
-  },
-  {
-    question: 'Can I override the suggested route?',
-    answer:
-      'Yes. Use Manual Override from Dispatch and confirm the alternate corridor before mission broadcast.',
-  },
-  {
-    question: 'Is there an offline mode for remote areas?',
-    answer:
-      'Offline guidance remains available with cached map sectors and last-synced incident metadata.',
-  },
-  {
-    question: 'How many vehicles can I track simultaneously?',
-    answer:
-      'Rescue_Nav supports concurrent tracking for up to 120 active units per mission cluster.',
-  },
-]
+export default function SupportPage() {
+  const { language } = useAppLanguage()
+  const faqItems = language === 'ko'
+    ? [
+        {
+          question: '경로 결과는 어떤 방식으로 보여지나요?',
+          answer:
+            '경로 계산 후 긴급 경로와 일반 경로를 함께 확인할 수 있으며, ETA, 거리, 경로 포인트 수를 화면에서 바로 비교할 수 있습니다.',
+        },
+        {
+          question: '긴급 경로와 일반 경로는 어떻게 비교하나요?',
+          answer:
+            '경로 계산이 끝나면 긴급 경로가 기본으로 선택되며, 경로 모드 전환으로 일반 경로와 번갈아 보면서 비교할 수 있습니다.',
+        },
+        {
+          question: 'fallback 정보는 언제 표시되나요?',
+          answer:
+            '그래프 기반 긴급 경로 계산이 어려운 경우 fallback 여부, 사유, 경고 문구가 긴급 경로 요약 카드에 함께 표시됩니다.',
+        },
+        {
+          question: '출동을 시작하면 어떤 상태를 확인할 수 있나요?',
+          answer:
+            '출동 중에는 현재 위치 추적과 목적지 기준 상태를 계속 확인할 수 있고, 목적지 100m 이내에 진입하면 자동 완료 처리됩니다.',
+        },
+      ]
+    : [
+        {
+          question: 'How are route results presented?',
+          answer:
+            'After calculation, both emergency and standard routes are shown together so ETA, distance, and route point count can be compared on screen.',
+        },
+        {
+          question: 'How do I compare emergency and standard routes?',
+          answer:
+            'Once route calculation is finished, the emergency route is selected by default, and you can switch route modes to compare it with the standard route.',
+        },
+        {
+          question: 'When is fallback information displayed?',
+          answer:
+            'If graph-based emergency routing is difficult, fallback usage, its reason, and warning text are shown together in the emergency route summary card.',
+        },
+        {
+          question: 'What can I monitor after dispatch starts?',
+          answer:
+            'During dispatch, you can keep monitoring live position and destination-based status, and the dispatch is auto-completed within 100 meters of the destination.',
+        },
+      ]
 
-const guideStepsDesktop = [
-  {
-    step: '01',
-    title: 'Enter incident address',
-    description:
-      'Input precise GPS coordinates or street address for immediate situational awareness.',
-  },
-  {
-    step: '02',
-    title: 'Select vehicle type',
-    description:
-      'Choose between Heavy Rescue, Ambulance, or Air Support to optimize terrain routing.',
-  },
-  {
-    step: '03',
-    title: 'Generate emergency route',
-    description: 'AI-driven engine calculates the fastest route avoiding construction and hazardous zones.',
-  },
-  {
-    step: '04',
-    title: 'Start dispatch simulation',
-    description: 'Review tactical summary and initiate live dispatch to field units.',
-  },
-]
+  const guideSteps = language === 'ko'
+    ? [
+        {
+          step: '01',
+          title: '목적지 검색',
+          description:
+            '카카오 우편번호 검색을 이용해 목적지를 선택하고, 출동에 필요한 주소 정보를 먼저 확정합니다.',
+        },
+        {
+          step: '02',
+          title: '차량 종류 선택',
+          description:
+            '소방차 또는 구급차를 선택하면 차량 기준에 맞춰 경로 계산 요청이 준비됩니다.',
+        },
+        {
+          step: '03',
+          title: '경로 비교 확인',
+          description: '긴급 경로와 일반 경로를 함께 계산한 뒤 ETA, 거리, 메타데이터를 비교해 확인합니다.',
+        },
+        {
+          step: '04',
+          title: '출동 상태 확인',
+          description: '출동을 시작하면 현재 위치 추적과 목적지 기준 상태를 확인하며 진행 상황을 이어서 볼 수 있습니다.',
+        },
+      ]
+    : [
+        {
+          step: '01',
+          title: 'Search destination',
+          description:
+            'Use Kakao postcode search to select the destination and confirm the address needed for dispatch.',
+        },
+        {
+          step: '02',
+          title: 'Choose vehicle type',
+          description:
+            'Select a fire engine or ambulance to prepare route calculation with the matching vehicle profile.',
+        },
+        {
+          step: '03',
+          title: 'Review route comparison',
+          description: 'Calculate emergency and standard routes together, then compare ETA, distance, and metadata.',
+        },
+        {
+          step: '04',
+          title: 'Check dispatch status',
+          description: 'After dispatch starts, continue monitoring live position and destination-based progress.',
+        },
+      ]
 
-const guideStepsTablet = [
-  {
-    step: '01',
-    title: 'Initialize Telemetry',
-    description:
-      'Synchronize your local coordinates with the central command. Rescue_Nav uses military-grade GPS triangulation.',
-    icon: 'o',
-    accent: 'red' as const,
-    previewTone: 'dark' as const,
-  },
-  {
-    step: '02',
-    title: 'Define Extraction Route',
-    description:
-      'Select your target and let the AI compute the safest corridor, bypassing high-risk zones and topographic hazards.',
-    icon: '[]',
-    accent: 'blue' as const,
-    previewTone: 'dark' as const,
-  },
-  {
-    step: '03',
-    title: 'Team Deployment',
-    description:
-      'Assign assets to team members directly through the dashboard. Track vitals and mission proximity metrics.',
-    icon: '+',
-    accent: 'red' as const,
-    previewTone: 'light' as const,
-  },
-  {
-    step: '04',
-    title: 'Broadcast Signal',
-    description: 'In final execution, trigger the Start Rescue command to broadcast your mission profile.',
-    icon: '!',
-    accent: 'red' as const,
-    previewTone: 'dark' as const,
-  },
-]
+  const copy = language === 'ko'
+    ? {
+        title: 'Rescue_Nav 사용 안내',
+        description: '현재 구현된 경로 계산, 경로 비교, 출동 상태 확인 흐름을 기준으로 핵심 사용 방법을 정리했습니다.',
+        faqTitle: '긴급 출동 FAQ',
+        faqDescription: '현장에서 자주 묻는 내용을 빠르게 확인할 수 있습니다.',
+        ctaTitle: '출동 준비가 끝났나요?',
+        ctaDescription: '안내를 확인했다면 대시보드로 이동해 목적지를 선택하고 경로 계산을 시작하세요.',
+        ctaButton: '대시보드로 돌아가기',
+      }
+    : {
+        title: 'Rescue_Nav Guide',
+        description: 'This page summarizes the current route calculation, route comparison, and dispatch status flow that is already implemented.',
+        faqTitle: 'Emergency Dispatch FAQ',
+        faqDescription: 'Check the most common field questions at a glance.',
+        ctaTitle: 'Ready to start dispatch?',
+        ctaDescription: 'If you have reviewed the guide, move to the dashboard, choose a destination, and start route calculation.',
+        ctaButton: 'Back to Dashboard',
+      }
 
-const mobileWorkflowItems = [
-  {
-    step: '01',
-    title: 'Initialize System',
-    description:
-      'Open the application and wait for the GPS telemetry to stabilize. Ensure the "Signal Pulse" indicator is green.',
-  },
-  {
-    step: '02',
-    title: 'Select Mission',
-    description:
-      'Tap "Missions" from the dashboard to view assigned rescues. Review the objective brief before departure.',
-  },
-  {
-    step: '03',
-    title: 'Start Rescue',
-    description:
-      'Press the high-contrast "START RESCUE" button. Follow compass line indicator for real-time tactical guidance.',
-  },
-]
-
-function DesktopSupportView() {
   return (
-    <PageShell outerClassName="hidden min-h-screen bg-[#efefef] xl:block">
+    <PageShell outerClassName="min-h-screen bg-[#ffffff]">
       <AppHeader active="support" showStartNavigation />
-      <main className="mx-auto flex max-w-[1280px] flex-col">
-
-        <section className="flex-1 px-8 pb-8 pt-6">
-          <h1 className="text-6xl font-bold leading-none tracking-tight text-zinc-900">How to Use Rescue_Nav</h1>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-500">
-            Master the authoritative emergency navigation system. Follow this guide to ensure rapid response
-            times and precision routing in high-stakes environments.
+      <main className="mx-auto flex w-full max-w-[1280px] flex-col px-4 pb-8 pt-5 md:px-6 xl:px-8">
+        <section className="flex-1">
+          <h1 className="text-5xl font-bold leading-none tracking-tight text-zinc-900 md:text-6xl">
+            {copy.title}
+          </h1>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-500 md:text-base">
+            {copy.description}
           </p>
 
-          <div className="mt-6 grid grid-cols-4 gap-3">
-            {guideStepsDesktop.map((step, index) => (
+          <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {guideSteps.map((step, index) => (
               <article
                 key={step.step}
                 className={[
@@ -149,203 +160,25 @@ function DesktopSupportView() {
           </div>
 
           <section className="mx-auto mt-10 max-w-3xl">
-            <h2 className="text-center text-4xl font-bold tracking-tight text-zinc-900">Emergency FAQ</h2>
-            <p className="mt-2 text-center text-sm text-zinc-500">Authoritative answers for time-sensitive operations.</p>
+            <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-900 md:text-4xl">{copy.faqTitle}</h2>
+            <p className="mt-2 text-center text-sm text-zinc-500">{copy.faqDescription}</p>
             <SupportFaqAccordion items={faqItems} className="mt-4 overflow-hidden rounded-lg border border-zinc-200" />
           </section>
 
-          <section className="mt-10 rounded-2xl bg-gradient-to-r from-[#122031] via-[#1f2235] to-[#2a1f30] px-8 py-8 text-white shadow-sm">
-            <h3 className="text-center text-5xl font-bold leading-none tracking-tight">Ready to Deploy?</h3>
-            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-zinc-300">
-              Your configuration is saved and ready for activation. Return to the dashboard to begin your mission setup.
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <Link to="/dashboard?view=history">
-                <CtaButton className="px-6 py-3 text-sm uppercase tracking-wide">Back to Dashboard</CtaButton>
-              </Link>
-              <CtaButton
-                variant="neutral"
-                className="bg-white/10 px-6 py-3 text-sm uppercase tracking-wide text-zinc-100 hover:bg-white/20"
-              >
-                Download Offline PDF
-              </CtaButton>
-            </div>
-          </section>
-        </section>
-
-        <footer className="border-t border-zinc-200 px-8 py-5 text-xs font-semibold text-zinc-400">
-          <div className="flex items-center justify-between">
-            <p>© 2026 Rescue_Nav. Authoritative Guardian Systems.</p>
-            <div className="flex items-center gap-5">
-              <span>Privacy Protocol</span>
-              <span>Tactical Terms</span>
-              <span>System Status</span>
-            </div>
-          </div>
-        </footer>
-      </main>
-    </PageShell>
-  )
-}
-
-function TabletSupportView() {
-  return (
-    <PageShell outerClassName="hidden min-h-screen bg-[#efefef] md:block xl:hidden">
-      <AppHeader active="support" showStartNavigation />
-      <main className="mx-auto max-w-[1280px] px-6 pb-8 pt-5">
-          <div className="mb-2 flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-400">
-            <span className="rounded-full bg-red-100 px-2 py-1 text-red-500">Protocol v2.4</span>
-            <span>Updated 2 hours ago</span>
-          </div>
-          <h1 className="text-6xl font-bold leading-none tracking-tight text-zinc-900">How to Use Rescue_Nav</h1>
-          <p className="mt-2 max-w-3xl text-base leading-relaxed text-zinc-500">
-            Master the authoritative rescue interface to maximize efficiency in critical situations.
-          </p>
-
-          <div className="mt-5 grid grid-cols-2 gap-4">
-            {guideStepsTablet.map((step) => (
-              <GuideWorkflowCard
-                key={step.step}
-                step={step.step}
-                title={step.title}
-                description={step.description}
-                icon={step.icon}
-                accent={step.accent}
-                previewTone={step.previewTone}
-              />
-            ))}
-          </div>
-
-          <section className="mt-8">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-4xl font-bold tracking-tight text-zinc-900">Emergency FAQ</h2>
-              <button className="text-xs font-bold uppercase tracking-wide text-red-500">View All Questions</button>
-            </div>
-            <SupportFaqAccordion items={faqItems} className="overflow-hidden rounded-lg border border-zinc-200" />
-          </section>
-
-          <section className="mt-8 rounded-2xl bg-gradient-to-r from-[#121f30] via-[#171e31] to-[#261c2e] px-8 py-8 text-white shadow-sm">
-            <h3 className="text-center text-5xl font-bold leading-none tracking-tight">Ready to Deploy?</h3>
+          <section className="mt-10 rounded-2xl bg-gradient-to-r from-[#122031] via-[#1f2235] to-[#2a1f30] px-5 py-8 text-white shadow-sm md:px-8">
+            <h3 className="text-center text-4xl font-bold leading-none tracking-tight md:text-5xl">{copy.ctaTitle}</h3>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-zinc-300">
-              Your configuration is saved and ready for activation. Return to the dashboard to begin your mission setup.
+              {copy.ctaDescription}
             </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <Link to="/dashboard?view=history">
-                <CtaButton className="px-6 py-3 text-sm uppercase tracking-wide">Back to Dashboard</CtaButton>
+            <div className="mt-6 flex justify-center">
+              <Link to="/dashboard?view=dashboard">
+                <CtaButton className="w-full px-6 py-3 text-sm uppercase tracking-wide sm:w-auto">{copy.ctaButton}</CtaButton>
               </Link>
-              <CtaButton
-                variant="neutral"
-                className="bg-white/10 px-6 py-3 text-sm uppercase tracking-wide text-zinc-100 hover:bg-white/20"
-              >
-                Download Offline PDF
-              </CtaButton>
             </div>
           </section>
+        </section>
       </main>
-
-      <footer className="border-t border-zinc-200 px-6 py-5 text-xs font-semibold text-zinc-400">
-        <div className="flex items-center justify-between">
-          <p>© 2026 Rescue_Nav. Authoritative Guardian Systems.</p>
-          <div className="flex items-center gap-5">
-            <span>Privacy Protocol</span>
-            <span>Tactical Terms</span>
-            <span>System Status</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </PageShell>
-  )
-}
-
-function MobileSupportView() {
-  return (
-    <PageShell outerClassName="min-h-screen bg-[#f2f2f2] md:hidden">
-      <AppHeader active="support" showStartNavigation />
-
-      <main className="px-5 pt-5">
-        <span className="inline-flex rounded-full bg-red-100 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-red-600">
-          Guide Center
-        </span>
-        <h1 className="mt-2 text-6xl font-bold leading-none tracking-tight text-zinc-900">How to Use Rescue_Nav</h1>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-500">
-          Master the interface designed for life-critical navigation and emergency response coordination.
-        </p>
-
-        <section className="mt-6">
-          <div className="mb-3 flex items-center gap-2">
-            <span className="h-0.5 w-5 bg-red-500" />
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Execution Workflow</h2>
-          </div>
-
-          <div className="space-y-3">
-            {mobileWorkflowItems.map((item) => (
-              <article key={item.step} className="rounded-lg border border-zinc-200 bg-white p-4 shadow-sm">
-                <div className="border-l-2 border-red-400 pl-3">
-                  <p className="text-3xl font-bold leading-none text-zinc-300">{item.step}</p>
-                  <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900">{item.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-500">{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-6">
-          <div className="mb-3 flex items-center gap-2">
-            <span className="h-0.5 w-5 bg-red-500" />
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Interface Overview</h2>
-          </div>
-
-          <article className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm">
-            <div className="h-48 rounded bg-gradient-to-br from-[#315c3a] to-[#7ea5a5]" />
-            <div className="mt-2 flex items-center justify-between rounded bg-zinc-100 px-3 py-2 text-xs font-bold text-zinc-600">
-              <span>Zone Alpha-6 Status</span>
-              <span>+ +</span>
-            </div>
-          </article>
-
-          <div className="mt-3 grid grid-cols-2 gap-3">
-            <article className="rounded-lg border border-zinc-200 bg-white p-3">
-              <p className="text-3xl font-bold text-zinc-900">4.2 m</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Response Velocity</p>
-            </article>
-            <article className="rounded-lg border border-red-200 bg-red-600 p-3 text-white">
-              <p className="text-3xl font-bold">0.8 s</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-red-100">Target Distance</p>
-            </article>
-          </div>
-        </section>
-
-        <section className="mt-6">
-          <div className="mb-3 flex items-center gap-2">
-            <span className="h-0.5 w-5 bg-red-500" />
-            <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Emergency FAQ</h2>
-          </div>
-
-          <SupportFaqAccordion
-            items={faqItems}
-            initialOpenIndex={null}
-            className="overflow-hidden rounded-lg border border-zinc-200"
-          />
-        </section>
-
-        <CtaButton className="mt-6 w-full px-4 py-3 text-sm uppercase tracking-wide shadow-[0_10px_18px_rgba(220,38,38,0.28)]">
-          Start Rescue
-        </CtaButton>
-
-        <p className="mt-3 text-center text-[10px] font-bold uppercase tracking-widest text-zinc-400">System Ready · v4.2.0</p>
-      </main>
-
-    </PageShell>
-  )
-}
-
-export default function SupportPage() {
-  return (
-    <>
-      <MobileSupportView />
-      <TabletSupportView />
-      <DesktopSupportView />
-    </>
   )
 }

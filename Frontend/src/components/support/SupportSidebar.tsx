@@ -6,7 +6,7 @@ interface SupportSidebarProps {
   mode: 'desktop' | 'tablet'
 }
 
-const menuItems = ['Home', 'Rescue Guide', 'Emergency FAQ', 'Settings']
+const menuItems = ['홈', '사용 안내', '긴급 FAQ', '설정']
 
 export default function SupportSidebar({ mode }: SupportSidebarProps) {
   const isGuideActive = true
@@ -21,7 +21,7 @@ export default function SupportSidebar({ mode }: SupportSidebarProps) {
         <>
           <p className="text-[30px] font-bold leading-none tracking-tight text-red-600">Rescue_Nav</p>
           {mode === 'desktop' ? (
-            <p className="mt-5 text-2xl font-bold tracking-tight text-zinc-800">Support Center</p>
+            <p className="mt-5 text-2xl font-bold tracking-tight text-zinc-800">안내 센터</p>
           ) : null}
         </>
       }
@@ -40,7 +40,7 @@ export default function SupportSidebar({ mode }: SupportSidebarProps) {
       }
       footer={
         <CtaButton className="w-full px-4 py-2.5 text-xs uppercase tracking-wide shadow-[0_10px_18px_rgba(220,38,38,0.28)]">
-          Start Rescue
+          출동 시작
         </CtaButton>
       }
     />

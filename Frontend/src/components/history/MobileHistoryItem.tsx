@@ -44,7 +44,7 @@ export default function MobileHistoryItem({
         </div>
         <div className="text-right">
           <p className="text-5xl font-bold leading-none text-red-600">{duration}</p>
-          <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Duration</p>
+          <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-zinc-400">소요 시간</p>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export default function MobileHistoryItem({
       </div>
 
       <div className="mt-3 flex items-center justify-between">
-        <p className="text-xs font-semibold text-zinc-400">Unit ID: #9940-DELTA</p>
+        <p className="text-xs font-semibold text-zinc-400">차량 ID: #9940-DELTA</p>
         <button className="text-sm font-bold text-red-600">{cta}</button>
       </div>
     </article>

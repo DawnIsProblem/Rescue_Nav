@@ -22,7 +22,7 @@ export default function CtaButton({
     <button
       type={type}
       className={[
-        'inline-flex items-center justify-center rounded-lg font-bold transition',
+        'inline-flex items-center justify-center rounded-lg font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 disabled:cursor-not-allowed disabled:opacity-70',
         variantClassMap[variant],
         className ?? '',
       ].join(' ')}

@@ -16,7 +16,7 @@ let injectedKey: string | null = null
 
 function loadKakaoMapsScript(appKey: string): Promise<void> {
   if (typeof window === 'undefined') {
-    return Promise.reject(new Error('Kakao Maps can only be loaded in the browser environment.'))
+    return Promise.reject(new Error('카카오 지도는 브라우저 환경에서만 불러올 수 있습니다.'))
   }
 
   if (window.kakao?.maps) {
@@ -26,7 +26,7 @@ function loadKakaoMapsScript(appKey: string): Promise<void> {
   if (loaderPromise) {
     if (injectedKey && injectedKey !== appKey) {
       return Promise.reject(
-        new Error('Kakao Maps SDK is already requested with a different JavaScript key.'),
+        new Error('카카오 지도 SDK가 이미 다른 자바스크립트 키로 요청되었습니다.'),
       )
     }
     return loaderPromise
@@ -59,7 +59,7 @@ function loadKakaoMapsScript(appKey: string): Promise<void> {
       loaderPromise = null
       reject(
         new Error(
-          'Timed out while loading Kakao Maps SDK. Check key/domain and restart dev server.',
+          '카카오 지도 SDK 로딩 시간이 초과되었습니다. 키와 도메인 설정을 확인한 뒤 개발 서버를 다시 실행하세요.',
         ),
       )
     }, KAKAO_SCRIPT_TIMEOUT_MS)
@@ -74,7 +74,7 @@ function loadKakaoMapsScript(appKey: string): Promise<void> {
       if (!window.kakao?.maps) {
         cleanScriptEvents()
         loaderPromise = null
-        reject(new Error('Kakao Maps SDK loaded, but window.kakao.maps is not available.'))
+        reject(new Error('카카오 지도 SDK는 로드됐지만 window.kakao.maps를 사용할 수 없습니다.'))
         return
       }
 
@@ -91,7 +91,7 @@ function loadKakaoMapsScript(appKey: string): Promise<void> {
       loaderPromise = null
       reject(
         new Error(
-          'Failed to load Kakao Maps SDK script. Check JavaScript key and [Platform > Web] domain registration.',
+          '카카오 지도 SDK 스크립트를 불러오지 못했습니다. 자바스크립트 키와 [플랫폼 > Web] 도메인 등록을 확인하세요.',
         ),
       )
     }
@@ -135,7 +135,7 @@ export default function useKakaoLoader(appKey: string): UseKakaoLoaderResult {
           setError(loadError)
           return
         }
-        setError(new Error('Unknown Kakao Maps loading error.'))
+        setError(new Error('알 수 없는 카카오 지도 로딩 오류가 발생했습니다.'))
       })
 
     return () => {
@@ -147,7 +147,7 @@ export default function useKakaoLoader(appKey: string): UseKakaoLoaderResult {
     return {
       isLoaded: false,
       status: 'error',
-      error: new Error('Missing Kakao JavaScript key. Set VITE_KAKAO_MAP_KEY.'),
+      error: new Error('카카오 자바스크립트 키가 없습니다. VITE_KAKAO_MAP_KEY를 설정하세요.'),
     }
   }
 
